@@ -16,8 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+
+#20220930 박소민 
+from instapost import views 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    
+    # 220930 최해민 회원가입 기능을 구현을 위해 instauser url로 보내주기
     path('', include('instauser.urls')),
+    
+    #20220930 박소민 
+    path('index/', views.index),
 
 ]
