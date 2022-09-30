@@ -10,5 +10,7 @@ class InstaUser(AbstractUser):
     nickname = models.CharField(max_length=20)
     is_dating = models.BooleanField(null=True)
 
+    class Meta:
+        db_table = 'member'
 
 
