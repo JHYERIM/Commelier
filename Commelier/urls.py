@@ -27,4 +27,5 @@ urlpatterns = [
     
     #20220930 박소민 
     path('index/', views.index),
+    path('new_post/', views.create_post), #new_post -> create_post로 변경 (22.09.30 문규빈)
 ]
