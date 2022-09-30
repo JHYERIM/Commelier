@@ -16,6 +16,7 @@ Including another URLconf
 from django.urls import path, include
 from instauser import views
 
+# 220930 최해민 앱네임 추가
 app_name = 'instauser'
 urlpatterns = [
     path('login/', views.login, name='login'),

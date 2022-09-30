@@ -2,11 +2,11 @@ from django.shortcuts import render, redirect
 from instauser.models import InstaUser
 # Create your views here.
 
+# 220930 최해민 회원가입후 로그인페이지로 보내기 위한 함수
 def login(request):
     return render(request, 'login.html')
 
-
-
+# 220930 최해민 회원가입 기능 함수
 def signup(request):
     if request.method == 'POST':
         email = request.POST.get('email') # 중복검사
