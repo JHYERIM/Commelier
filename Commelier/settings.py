@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,6 +41,8 @@ INSTALLED_APPS = [
 
     # 220930 장혜림 Add instauser App
     'instauser',
+    #220930 문규빈 add instapost app
+    'instapost',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +136,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # 220930 최해민 django 기본 유저 모델 => 커스텀 유저 모델 변경
 AUTH_USER_MODEL = 'instauser.InstaUser'
+# 220930 문규빈 이미지 필드 경로 설정(?)
+MEDIA_ROOT = os.path.join(BASE_DIR, 'ssum')
+MEDIA_URL = '/ssum/'
