@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # 220930 장혜림 Add instauser App
+    'instauser',
 ]
 
 MIDDLEWARE = [
@@ -121,3 +124,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# 220930 최해민 django 기본 유저 모델 => 커스텀 유저 모델 변경
+AUTH_USER_MODEL = 'instauser.InstaUser'
