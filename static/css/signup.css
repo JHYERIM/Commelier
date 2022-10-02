@@ -165,7 +165,24 @@
     color: #8e9096;
     font-size: 14px;
   }
-  
+  /* 221002 최해민 is_dating_div 작업 */
+  .is_dating_div{
+    border: 1px solid #dbdbdb;
+    background-color: #fafafa;
+    padding: 10px 5px;
+    margin: 5px 0;
+    font-size: inherit;
+  }
+  /* 221002 최해민 error 메세지 띄우기 위한 css */
+  .error{
+    border: 1px solid none;
+    border-radius: 1rem;
+    text-align: center;
+    padding: 1rem;
+    background-color: rgb(255, 0, 0, .6);
+    color: #ffffff;
+    margin-bottom: 1rem;
+  }
   
   
   /* Mobile Styles */
