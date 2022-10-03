@@ -14,8 +14,8 @@
     <div class="container">
       <form action="{% url 'instauser:signup' %}" method="post">
         {% csrf_token %}
-        <input type="email" name="email" placeholder="이메일">
-        <input type="text" name="name" placeholder="성함">
+        <!-- 221003 최해민 필요없는 인풋 삭제 -->
+        <input type="text" name="username" placeholder="ID">
         <input type="text" name="nickname" placeholder="닉네임">
         <input type="password" name="password" placeholder="비밀번호">
         <!-- 221002 최해민 사용자 비밀번호 확인을 위한 password2추가 -->

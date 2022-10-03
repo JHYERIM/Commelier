@@ -82,10 +82,10 @@
 
 
                 <h1 class="sprite_insta_big_logo title"></h1>
-                <form action="{% url 'instauser:login' %}"  method='POST'>
+                <form action="{% url 'instauser:login' %}" method='post'>
                     {% csrf_token %}
                     <p class="login_user_name">>
-                        <label for="username">이메일:</label>
+                        <label for="username">ID:</label>
                         <input type="text" name='username' id='username'>
                     </p>
 

@@ -26,6 +26,9 @@ urlpatterns = [
     # 220930 최해민 회원가입 기능을 구현을 위해 instauser url로 보내주기
     path('', include('instauser.urls')),
     
+    # 221003 최해민 comment 기능 추가
+    path('', include('instapost.urls')),
+    
     #20220930 박소민 
     path('index/', views.index),
     path('new_post/', views.create_post), #new_post -> create_post로 변경 (22.09.30 문규빈)

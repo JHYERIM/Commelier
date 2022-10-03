@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Posting #
+# from .models import Posting
 
 
 
@@ -25,3 +25,10 @@ def create_post(request):
         new_post.save()
         return redirect(request, 'create_post') # elif가 실행되지 않으면 'create_post'로 되돌아감
     # 
+    
+
+# 221003 최해민 댓글기능을 위해 임시로 render 생성
+def post(request):
+    return render(request, 'post.html')
+def detail_page(request):
+    return render(request, 'detail-page.html')
