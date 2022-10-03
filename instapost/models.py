@@ -6,21 +6,20 @@ from instauser.models import InstaUser
 
 # Create your models here.
 
-class Instapost(models.Model):
+class Instapost(models.Model): #메인페이지 클래스 생성
     content = models.TextField(max_length=100)
     # image = models.ImageField # 이건 이미지가 딱 하나 업로드할 수 있습니다.
     create_date = models.DateTimeField(auto_now_add=True)
-    nickname = models.ForeignKey(InstaUser, on_delete=models.CASCADE)
-# author
-# 내지는 user?, instauser
-# InstaUser 안에 있는 "최해민" 이라는 사람들 데려올거잖아용
-# 최해민이라는 사람의 닉네임을 갖다 쓰면 되니까
-# 굳이 nickname이라 적어줄 필요 없읍니다.
-# 게시글은 작성자만 있으면 대겠져?
+    user = models.ForeignKey('instauser.InstaUser', on_delete=models.CASCADE)
 
-class Image(models.Model):
+
+class Image(models.Model): # 게시물 목록/ 게시물 작성에 들어갈 이미지 업로드 클래스 생성
     image = models.ImageField(upload_to='ssum')
 
+class Posting(models.Model): #게시글 작성 클래스 생성
+    content = models.TextField(max_length=100, null=True)
+    create_date = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey('instauser.InstaUser', on_delete=models.CASCADE)
 
 
 
