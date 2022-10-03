@@ -83,8 +83,8 @@
                 <form action="{% url 'instauser:login' %}"  method='POST'>
                     {% csrf_token %}
                     <p class="login_user_name">>
-                        <label for="email">이메일:</label>
-                        <input type="text" name='email' id='email'>
+                        <label for="username">이메일:</label>
+                        <input type="text" name='username' id='username'>
                     </p>
 
                     <p class="login_user_password">
@@ -100,7 +100,7 @@
 
             <div class="bottom_box">
                 <div>
-                    <span>아이디가 없으신가요?</span><a href="#">회원가입</a>
+                    <span>아이디가 없으신가요?</span><a href="/signup/">회원가입</a>
                 </div>
             </div>
 
@@ -113,6 +113,5 @@
 </section>
 
 
-<script src="js/insta.js"></script>
 </body>
 </html>

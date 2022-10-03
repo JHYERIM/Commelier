@@ -25,11 +25,11 @@
 
 
     <title>instagram</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/profile.css">
-    <link rel="shortcut icon" href="imgs/instagram.png">
+    <link rel="stylesheet" href="../static/css/reset.css">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/profile.css">
+    <link rel="shortcut icon" href="../static/imgs/instagram.png">
 
 
 </head>
@@ -85,7 +85,7 @@
                     <div class="top">
                         <div class="user_name">KindTiger</div>
                         <a href="profile_edit.html" class="profile_edit">프로필편집</a>
-                        <a href="#" class="logout">로그아웃</a>
+                        <a href="{% url 'instauser:logout' %}" class="logout">로그아웃</a>
                     </div>
 
                     <ul class="middle">
@@ -182,7 +182,6 @@
 
 
 <!--<script src="js/insta.js"></script>-->
-<script src="js/profile.js"></script>
 <script>
 
 

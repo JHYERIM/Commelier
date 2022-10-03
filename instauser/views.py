@@ -1,30 +1,29 @@
 from django.shortcuts import render , redirect
 from instauser.models import InstaUser
-from django.contrib.auth import authenticate ,login
-from django.contrib import auth
+from django.contrib.auth import  authenticate,login ,logout
 
 
 def login_view(request):
-    if request.method == "POST":
-       email = request.POST['email']            #요청받은 값을 변수에 담음.
-       password = request.POST['password']
-                                                #들어온 아이디 비빌먼호를 검증.
-       user =authenticate(email='eamil' , password='password')                                
-       if user is not None:                      #이렇게 검증받은 아이디 로그인
-        login(request, user)
-        return redirect('')
-       else:
-        return render(request,'login.html'), {'error':'이메일 혹은 비밀번호를 잘못 입력하셨습니다.' }                                            
+    if request.method == 'GET':
+        return render(request, 'login.html')
 
-
-    return render(request, 'login.html')
-
+    elif request.method =='POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username , password=password)
+        if user is not None:
+            login(request, user=user)
+            return redirect('instauser:profile')
+        else:
+            return redirect('instauser:login')
 
 def logout_view(request):
-    if request.method == 'POST':
-        auth.logout(request)
-        return redirect('')
+    logout(request)
+    return redirect('instauser:login')
 
+
+def profile_view(request):
+    return render(request,'profile.html')
 
 # Create your views here.
 
