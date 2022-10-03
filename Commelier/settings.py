@@ -123,6 +123,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+
+
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
@@ -135,6 +137,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # 220930 최해민 django 기본 유저 모델 => 커스텀 유저 모델 변경
 AUTH_USER_MODEL = 'instauser.InstaUser'
+
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+
 # 220930 문규빈 이미지 필드 경로 설정(?)
 MEDIA_ROOT = os.path.join(BASE_DIR, 'ssum')
 MEDIA_URL = '/ssum/'
