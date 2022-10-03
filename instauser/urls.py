@@ -1,3 +1,4 @@
+
 """Commelier URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -19,6 +20,11 @@ from instauser import views
 # 220930 최해민 앱네임 추가
 app_name = 'instauser'
 urlpatterns = [
-    path('login/', views.login, name='login'),
     path('signup/', views.signup, name='signup'),
+    path('login/', views.login_view, name= 'login'),
+    path('logout/', views.logout_view, name= 'logout'),
+    path('profile/', views.profile_view, name= 'profile'),
+
 ]
+
+  
