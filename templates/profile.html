@@ -25,11 +25,11 @@
 
 
     <title>instagram</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/profile.css">
-    <link rel="shortcut icon" href="imgs/instagram.png">
+    <link rel="stylesheet" href="../static/css/reset.css">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/profile.css">
+    <link rel="shortcut icon" href="../static/imgs/instagram.png">
 
 
 </head>
@@ -52,9 +52,9 @@
 
             <div class="search_field">
                 <input type="text" placeholder="검색" tabindex="0">
-
+                
                 <div class="fake_field">
-                    <span class=sprite_small_search_icon></span>
+                    <span class="sprite_small_search_icon"></span>
                     <span>검색</span>
                 </div>
             </div>
@@ -67,6 +67,10 @@
                 <a href="profile.html"><div class="sprite_user_icon_outline"></div></a>
             </div>
         </section>
+        <!-- 221003 최신욱, 최해민 login 확인 태그 삽입 -->
+        {% if user.is_authenticated %}
+        <p>Welcome {{ user.username }} !!!</p>
+        {% endif %}
     </header>
 
 
@@ -84,8 +88,11 @@
                 <div class="detail">
                     <div class="top">
                         <div class="user_name">KindTiger</div>
+                        <!-- 221003 최신욱, 최해민 login 확인시 띄워주는 편집기능 만들기 -->
+                        {% if user.is_authenticated %}
                         <a href="profile_edit.html" class="profile_edit">프로필편집</a>
-                        <a href="#" class="logout">로그아웃</a>
+                        <a href="{% url 'instauser:logout' %}" class="logout">로그아웃</a>
+                        {% endif %}
                     </div>
 
                     <ul class="middle">
@@ -182,7 +189,6 @@
 
 
 <!--<script src="js/insta.js"></script>-->
-<script src="js/profile.js"></script>
 <script>
 
 

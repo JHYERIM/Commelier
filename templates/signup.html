@@ -1,32 +1,73 @@
-<form action="{% url 'instauser:signup' %}" method="post">
-{% csrf_token %}
-<label for="email"></label>
-<input type="email" id="email" name="email" placeholder="email">
-<br>
-<br>
-<br>
-<label for="name"></label>
-<input type="text" id="name" name="name" placeholder="name">
-<br>
-<br>
-<br>
-<label for="nickname"></label>
-<input type="text" id="nickname" name="nickname" placeholder="nickname">
-<br>
-<br>
-<br>
-<label for="password"></label>
-<input type="password" id="password" name="password" placeholder="password">
-<br>
-<br>
-<br>
+<link rel="stylesheet" href="../static/css/signup.css">
+<main>
+  <div class="page">
+    <div class="header">
+      <h1 class="logo">Instagram</h1>
+      <p>Sign up to see photos and videos from your friends.</p>
+      <button><i class="fab fa-facebook-square"></i> Log in with Facebook</button>
+      <div>
+        <hr>
+        <p>OR</p>
+        <hr>
+      </div>
+    </div>
+    <div class="container">
+      <form action="{% url 'instauser:signup' %}" method="post">
+        {% csrf_token %}
+        <!-- 221003 최해민 필요없는 인풋 삭제 -->
+        <input type="text" name="username" placeholder="ID">
+        <input type="text" name="nickname" placeholder="닉네임">
+        <input type="password" name="password" placeholder="비밀번호">
+        <!-- 221002 최해민 사용자 비밀번호 확인을 위한 password2추가 -->
+        <input type="password" name="password2" placeholder="비밀번호 확인">
+        <div class="is_dating_div">
+          <label for="is_dating">연애중이신가요?</label>
+          <select name="is_dating" id="is_dating">
+            <option value="False">Single</option>
+            <option value="True">Couple</option>
+          </select>
+        </div>
+        <button type="submit">Sign up</button>
+      </form>
 
-<select name="is_dating">
-    <option value="">is_dating</option>
-    <option value="True">True</option>
-    <option value="True">False</option>
-</select>
-<br>
-<input type="submit" value="완료">
+      <!-- 221002 최해민 error 메세지 보여주기 -->
+      {% if error %}
+      <div class="error">
+        {{ error }}
+      </div>
+      {% endif %}
 
-</form>
+      <ul>
+        <li>By signing up, you agree to our</li>
+        <li><a href="">Terms</a></li>
+        <li><a href="">Data Policy</a></li>
+        <li>and</li>
+        <li><a href="">Cookies Policy</a> .</li>
+      </ul>
+    </div>
+  </div>
+  <div class="option">
+    <p>Have an account? <a href="{% url 'instauser:login' %}">Log in</a></p>
+  </div>
+  <div class="otherapps">
+    <p>Get the app.</p>
+    <button type="button"><i class="fab fa-apple"></i> App Store</button>
+    <button type="button"><i class="fab fa-google-play"></i> Google Play</button>
+  </div>
+  <div class="footer">
+    <ul>
+      <li><a href="">ABOUT</a></li>
+      <li><a href="">HELP</a></li>
+      <li><a href="">PRESS</a></li>
+      <li><a href="">API</a></li>
+      <li><a href="">JOBS</a></li>
+      <li><a href="">PRIVACY</a></li>
+      <li><a href="">TEMS</a></li>
+      <li><a href="">LOCATIONS</a></li>
+      <li><a href="">TOP ACCOUNTS</a></li>
+      <li><a href="">HASHTAGS</a></li>
+      <li><a href="">LANGUAGE</a></li>
+    </ul>
+    <p>© 2020 PICTUREGRAM</p>
+  </div>
+</main>
