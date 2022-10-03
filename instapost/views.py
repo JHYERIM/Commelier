@@ -16,13 +16,16 @@ def create_post(request):
             return render(request, 'new_post.html')
         else:  # 로그인이 되어 있지 않다면
             return redirect('/login/')
+        
     elif request.method == 'POST': #요청하는 방식이 POST 방식인지 확인
         user = request.user #현재 로그인 한 사용자를 불러오기
         print(user)
         new_post = Instapost( ) #글쓰기 모델 가져오기
+        # 게시물의 작성자 = 현재 요청하는 유저
         new_post.author = user.name # 모델에 사용자 저장 하기 위해 불러옴/venv
         new_post.content = request.POST.get('content','') #모델에 글 저장하기
         new_post.save() 
+        # redirect도 네이밍 이용해서 넘겨주셍요
         return redirect('templates:index') # elif가 실행되지 않으면 'index'로 되돌아감
     
     
