@@ -3,7 +3,6 @@ from django.shortcuts import render, redirect
 from .models import Instapost #
 
 
-
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
@@ -24,5 +23,11 @@ def create_post(request):
         new_post.content = request.POST.get('content','') #모델에 글 저장하기
         new_post.save() 
         return redirect('templates:index') # elif가 실행되지 않으면 'index'로 되돌아감
-    
-    
+
+
+# 221003 최해민 댓글기능을 위해 임시로 render 생성
+def post(request):
+    return render(request, 'post.html')
+def detail_page(request):
+    return render(request, 'detail-page.html')
+
