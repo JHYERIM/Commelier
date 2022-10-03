@@ -13,19 +13,12 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
 from django.urls import path, include
+from instauser import views
 
-#20220930 박소민 
-from instapost import views 
-
+# 220930 최해민 앱네임 추가
+app_name = 'instauser'
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    
-    # 220930 최해민 회원가입 기능을 구현을 위해 instauser url로 보내주기
-    path('', include('instauser.urls')),
-    
-    #20220930 박소민 
-    path('index/', views.index),
-    path('new_post/', views.create_post), #new_post -> create_post로 변경 (22.09.30 문규빈)
+    path('login/', views.login, name='login'),
+    path('signup/', views.signup, name='signup'),
 ]
