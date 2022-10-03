@@ -140,6 +140,10 @@ AUTH_USER_MODEL = 'instauser.InstaUser'
 
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 
+
+# 221003 최신욱 인증 실패시 리다이렉트할 경로를 지정함.
+LOGIN_URL = '/login/'
+
 # 220930 문규빈 이미지 필드 경로 설정(?)
 MEDIA_ROOT = os.path.join(BASE_DIR, 'ssum')
 MEDIA_URL = '/ssum/'
