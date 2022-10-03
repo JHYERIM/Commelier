@@ -1,11 +1,9 @@
-# 221003 최해민 urls.py 생성
-
 from django.urls import path, include
-from instapost import views
+from . import views
 
-# 220930 최해민 앱네임 추가
 app_name = 'instapost'
 urlpatterns = [
-    path('post/', views.post, name='post'),
-    path('detail_page/', views.detail_page, name='detail_page'),
+  #20220930 박소민 
+    path('index/', views.index, name= 'index'),
+    path('new_post/', views.create_post, name= 'create_review'), #new_post -> create_post로 변경 (22.09.30 문규빈)
 ]
