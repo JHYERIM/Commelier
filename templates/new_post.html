@@ -74,7 +74,9 @@
     <div id="main_container">
 
         <div class="post_form_container">
-            <form action="#" class="post_form">
+
+            <form action="{% url 'instapost:create_review' %}"  method= "post" class="post">
+                {% csrf_token %} <!--22.10.03 문규빈 암호화-->
                 <div class="title">
                     NEW POST
                 </div>
