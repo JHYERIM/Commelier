@@ -56,3 +56,13 @@ def create_comment(request, id):
         # 저장이 끝났으면, detail_post로 보내주세요.
     return redirect('/instapost/'+str(id))
 # 127.0.0.1:8000/instapost/<int:id>
+
+
+# 221004 최해민 댓글 삭제 함수 추가
+def delete_comment(request, id):
+    # html에서 넘겨준 comment.id를 이용하여 댓글 객체를 가져온다.
+    comment = InstaComment.objects.get(id = id)
+    # 삭제한 후 다시 상세페이지를 띄워주기 위해 변수에 저장해 둔다
+    now_instapost = comment.instapost.id
+    comment.delete()
+    return redirect('/instapost/'+str(now_instapost))

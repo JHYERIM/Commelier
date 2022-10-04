@@ -13,4 +13,7 @@ urlpatterns = [
     # 221004 박소민 댓글 create url 추가
     # 여기서 달린 <int:id>는 instapost의 pk입니다.
     path('comment/<int:id>', views.create_comment, name= 'create_comment'),
+    
+    # 221004 최해민 댓글 delete url 추가
+    path('comment/delete/<int:id>', views.delete_comment, name= 'delete_comment'),
 ]
