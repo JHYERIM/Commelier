@@ -35,7 +35,7 @@
     <link rel="shortcut icon" href="../static/imgs/instagram.png">
 
 
-    <style>
+    <style> 
         #main_container {
             /*height: 6000px;*/
         }
@@ -93,16 +93,17 @@
                         </div>
                     </div>
 
-                    <!-- 221004 박소민, 최해민 댓글 기능구현을 위해 수정 -->
+
                     <div class="detail--right_box">
+
                         <header class="top">
                             <div class="user_container">
                                 <div class="profile_img">
                                     <img src="../static/imgs/thumb.jpeg" alt="">
                                 </div>
                                 <div class="user_name">
-                                    <div class="nick_name">{{ instapost.author.nickname }}</div>
-                                    <div class="country">{{ instapost.author.username }}</div>
+                                    <div class="nick_name">KindTiger</div>
+                                    <div class="country">Seoul, South Korea</div>
                                 </div>
                             </div>
                             <div class="sprite_more_icon" data-name="more">
@@ -233,12 +234,9 @@
                         <div class="timer">2시간</div>
 
                         <div class="commit_field">
-                            <!-- 221004 박소민, 최해민 form태그 추가 -->
-                            <form action="{% url 'instapost:create_comment' instapost.id %}" method="post">
-                                {% csrf_token %}
-                                <input type="text" placeholder="댓글달기.." name="content">
-                                <button type="submit">게시</button>
-                            </form>
+                            <input type="text" placeholder="댓글달기..">
+
+                            <div class="upload_btn">게시</div>
                         </div>
 
 
