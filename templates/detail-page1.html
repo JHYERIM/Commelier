@@ -114,21 +114,30 @@
                             </div>
 
                         </header>
-
+                        <!-- 221004 박소민, 최해민 댓글기능 구현 수정 -->
                         <section class="scroll_section">
                             <div class="admin_container">
                                 <div class="admin"><img src="../static/imgs/thumb.jpeg" alt="user"></div>
                                 <div class="comment">
-                                    <span class="user_id">Kindtiger</span>강아지가 많이 힘든가보다ㅜㅜㅜㅜㅜ조금만힘내
-                                    <div class="time">2시간</div>
+                                    <span class="user_id">{{ instapost.author.nickname }}</span>{{ instapost.content }}
+                                    <div class="time">{{ instapost.create_date }}</div>
                                 </div>
                             </div>
-
+                            <!-- comments = [댓글1, 댓글2, 댓글3, 댓글4 ...] -->
+                            <!-- for문을 이용해서 하나씩 꺼내와줍니다. -->
+                             
+                            {% for comment in comments %}
                             <div class="user_container-detail">
                                 <div class="user"><img src="../static/imgs/thumb02.jpg" alt="user"></div>
                                 <div class="comment">
-                                    <span class="user_id">in0.lee</span>너무귀엽네요 ㅎㅎㅎ맞팔해요~!
-                                    <div class="time">2시간 <span class="try_comment">답글 달기</span></div>
+                                    <span class="user_id">{{ comment.author.nickname }}</span>{{ comment.content }}
+                                    <div class="time">{{ comment.create_date | timesince }} 전<span class="try_comment">답글 달기 
+                                        {% if comment.author == request.user %}
+                                            <a href="{% url 'instapost:delete_comment' comment.id %}">[삭제]</a>
+                                        {% else %}
+                                        {% endif %}
+                                    </span></div>
+                                    
                                     <div class="icon_wrap">
                                         <div class="more_trigger">
                                             <div class="sprite_more_icon"></div>
@@ -139,71 +148,7 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="user_container-detail">
-                                <div class="user"><img src="../static/imgs/thumb03.jpg" alt="user"></div>
-                                <div class="comment">
-                                    <span class="user_id">ye_solkim</span>강아지 이름이 뭐에요???
-                                    <div class="time">2시간 <span class="try_comment">답글 달기</span></div>
-                                    <div class="icon_wrap">
-                                        <div class="more_trigger">
-                                            <div class="sprite_more_icon"></div>
-                                        </div>
-                                        <div>
-                                            <div class="sprite_small_heart_icon_outline"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="user_container-detail">
-                                <div class="user"><img src="../static/imgs/thumb02.jpg" alt="user"></div>
-                                <div class="comment">
-                                    <span class="user_id">in0.lee</span>너무귀엽네요 ㅎㅎㅎ맞팔해요~!
-                                    <div class="time">2시간 <span class="try_comment">답글 달기</span></div>
-                                    <div class="icon_wrap">
-                                        <div class="more_trigger">
-                                            <div class="sprite_more_icon"></div>
-                                        </div>
-                                        <div>
-                                            <div class="sprite_small_heart_icon_outline"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="user_container-detail">
-                                <div class="user"><img src="../static/imgs/thumb03.jpg" alt="user"></div>
-                                <div class="comment">
-                                    <span class="user_id">in0.lee</span>너무귀엽네요
-                                    <div class="time">2시간 <span class="try_comment">답글 달기</span></div>
-                                    <div class="icon_wrap">
-                                        <div class="more_trigger">
-                                            <div class="sprite_more_icon"></div>
-                                        </div>
-                                        <div>
-                                            <div class="sprite_small_heart_icon_outline"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="user_container-detail">
-                                <div class="user"><img src="imgs/thumb02.jpg" alt="user"></div>
-                                <div class="comment">
-                                    <span class="user_id">in0.lee</span>너무귀엽네요 ㅎㅎㅎ맞팔해요~!
-                                    <div class="time">2시간 <span class="try_comment">답글 달기</span></div>
-                                    <div class="icon_wrap">
-                                        <div class="more_trigger">
-                                            <div class="sprite_more_icon"></div>
-                                        </div>
-                                        <div>
-                                            <div class="sprite_small_heart_icon_outline"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                            {% endfor %}
                         </section>
 
 
