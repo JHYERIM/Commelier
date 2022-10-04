@@ -15,7 +15,7 @@
 </head>
 
 <body>
-
+    
 
     <section id="container">
         <header id="header">
@@ -57,7 +57,7 @@
                 <div class="contents_box">
                     <article class="contents">
                         <header class="top">
-                            <div class="user_container">
+                            <div class="user_container" onclick="location.href='{% url 'instauser:profile' %}';">
                                 <div class="profile_img">
                                     <img src="../static/imgs/thumb.jpeg" alt="프로필이미지">
                                 </div>
@@ -66,7 +66,7 @@
                                     <div class="country s_text">Seoul, South Korea</div>
                                 </div>
                             </div>
-                            <div class="sprite_more_icon" data-name="more">
+                            <div class="sprite_more_icon" data-name="more" onclick="location.href='{% url 'instapost:edit' instapost.id %}';">
                                 <ul class="toggle_box">
                                     <li><input type="submit" class="follow" value="팔로우" data-name="follow"></li>
                                     <li>수정</li>
@@ -113,8 +113,11 @@
                         <div class="timer">{{ comment.create_date | timesince }} 전</div>
                         {% endfor %}
                         <div class="comment_field" id="add-comment-post37">
-                            <input type="text" placeholder="댓글달기...">
-                            <button type="submit">게시</button>
+                            <form action="{% url 'instapost:create_comment' instapost.id %}" method="post">
+                                {% csrf_token %}
+                                <input type="text" placeholder="댓글달기..." name="content">
+                                <button type="submit">게시</button>
+                            </form>
                         </div>
                     </article>
                 </div>

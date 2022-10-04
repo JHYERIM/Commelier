@@ -193,6 +193,11 @@ body{
 .contents .top .user_container{
     display: flex;
 }
+/* 221004 최해민 user_container 클릭시 프로필로 이동을 위한 css 작업*/
+.user_container:hover{
+    cursor: pointer;
+    
+}
 .contents .sprite_more_icon{
     position: relative;
 }
