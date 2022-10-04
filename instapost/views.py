@@ -24,7 +24,7 @@ def create_post(request):
         # 게시물의 작성자 = 현재 요청하는 유저
         new_post.author = user # 모델에 사용자 저장 하기 위해 불러옴/venv
         new_post.content = request.POST.get('content','') #모델에 글 저장하기
-        new_image.image = request.POST.get('image', '') 
+        new_image.image = request.FILES.get('images', '') 
         print(request.POST)
         new_post.save()
         new_image.save()
@@ -32,9 +32,59 @@ def create_post(request):
         return redirect('instapost:index') # elif가 실행되지 않으면 'index'로 되돌아감
 
 
+# def Edit_post(request, pk):
+#     if request.method == 'GET':  # 요청하는 방식이 GET 방식인지 확인하기
+#         user = request.user.is_authenticated  # 사용자가 로그인이 되어 있는지 확인하기
+#         if user:  # 로그인 한 사용자라면
+#             return render(request, '')
+#         else:  # 로그인이 되어 있지 않다면
+#             return redirect('/login/')
+
+
+
+
+
+
+# def remove_post(request, pk):
+#     post = Instapost.objects.get(pk=pk)
+#     if request.method =='POST':
+#         post.delete()
+#         return redirect('/index/')
+#     return render(request, 'detali-page_1.html', {'Instapost:post'})
+
+
+
+def edit(request, pk):
+    instapost = Instapost.objects.get(pk=pk)
+    context = {
+        'instapost': instapost,
+    }
+    return render(request, 'detail-page_1.html', context) #아 
+
+def update(request, pk):
+     instapost = Instapost.objects.get(pk=pk)
+     image = Image.objects.get(pk=pk)
+
+     # 게시글 변경사항 저장 하기.
+    
+     if request.method == 'POST':
+        
+        instapost.content = request.POST.get('content')
+        image.image= request.FILES.get('images')
+        instapost.save()
+        image.save()
+        return redirect(str(instapost.pk), 'instapost:index')
+     
+     # 게시글 수정사항 입력 페이지에 처음 접속했을 때.       
+
+     else:
+        return redirect('detail-page_1')
+
+
+
 # 221003 최해민 댓글기능을 위해 임시로 render 생성
 def post(request):
     return render(request, 'post.html')
 def detail_page(request):
-    return render(request, 'detail-page.html')
+    return render(request, 'detail-page_1.html')
 

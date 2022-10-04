@@ -16,6 +16,9 @@ class Instapost(models.Model): #메인페이지 클래스 생성
 class Image(models.Model): # 게시물 목록/ 게시물 작성에 들어갈 이미지 업로드 클래스 생성
     image = models.ImageField(blank =True ,null=True ,upload_to='images') #image를 ImageField를 이용해 imges라는 디렉토리 아래에 업로드
 
+class Edit_time(models.Model):
+    modify_date =models.DateTimeField(null=True,blank=True)
+
 #2022.10.03 class가 하나만 있어도 될 것 같아서 posting class 삭제
 #image -foreign key 
 
