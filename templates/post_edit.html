@@ -63,7 +63,7 @@
 
             <div class="right_icons">
                 <!-- 221004 최해민 템플릿 URL연결 -->
-                <a href="{% url 'instapost:create_review' %}"><div class="sprite_camera_icon"></div></a>
+                <a href="{% url 'instapost:index' %}"><div class="sprite_camera_icon"></div></a>
                 <!-- <a href="login.html"><div class="sprite_compass_icon"></div></a> -->
                 <!-- <a href="follow.html"><div class="sprite_heart_icon_outline"></div></a> -->
                 <a href="{% url 'instauser:profile' %}"><div class="sprite_user_icon_outline"></div></a>
@@ -106,7 +106,7 @@
             </form>
 
         </div>
-
+        <!--최신욱,문규빈,장혜림 게시글 삭제 기능 추가-->
         <form action= "{% url 'instapost:remove' instapost.pk %}"method="POST" >
             {% if user.is_authenticated %}
             {% csrf_token %}
