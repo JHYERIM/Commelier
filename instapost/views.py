@@ -7,7 +7,8 @@ from .models import Instapost, Image, InstaComment
 
 # Create your views here.
 def index(request):
-    post_list = Instapost.objects.all()
+    # 221004 최해민, 박소민 post_list 최신순으로 정렬 후 값 넘겨주기
+    post_list = Instapost.objects.all().order_by('-id')
     return render(request, 'index.html', {'post_list' : post_list})
 
 
