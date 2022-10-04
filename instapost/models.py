@@ -22,3 +22,10 @@ class Edit_time(models.Model):
 #2022.10.03 class가 하나만 있어도 될 것 같아서 posting class 삭제
 #image -foreign key 
 
+# 221004 박소민, 최해민 댓글 클래스 생성
+class InstaComment(models.Model):
+    content = models.CharField(max_length=50)
+    create_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField(auto_now=True)
+    comment_author = models.ForeignKey(InstaUser, on_delete=models.CASCADE)
+    instapost = models.ForeignKey(Instapost, on_delete=models.CASCADE)

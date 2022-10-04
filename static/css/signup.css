@@ -184,7 +184,10 @@
     margin-bottom: 1rem;
   }
   
-  
+  /* 221003 최해민 버튼 hover추가 */
+  .signup_button:hover{
+    cursor: pointer;
+  }
   /* Mobile Styles */
   
   @media only screen and (max-width: 400px) {
