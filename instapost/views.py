@@ -5,7 +5,9 @@ from .models import Instapost, Image, InstaComment
 
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    post_list = Instapost.objects.all()
+    return render(request, 'index.html', {'post_list' : post_list})
+
 
 # 220930 박소민, 문규빈, 장혜림 포스트생성 함수 추가가
 def create_post(request):

@@ -28,4 +28,4 @@ class InstaComment(models.Model):
     create_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(InstaUser, on_delete=models.CASCADE)
-    instapost = models.ForeignKey(Instapost, on_delete=models.CASCADE)
+    instapost = models.ForeignKey(Instapost, on_delete=models.CASCADE, related_name='comments')
