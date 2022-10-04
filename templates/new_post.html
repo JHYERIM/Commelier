@@ -75,7 +75,7 @@
 
         <div class="post_form_container">
 
-            <form action="{% url 'instapost:create_review' %}"  method= "post" class="post">
+            <form action="{% url 'instapost:create_review' %}"  method= "post" class="post" enctype="multipart/form-data">
                 {% csrf_token %} <!--22.10.03 문규빈 암호화-->
                 <div class="title">
                     NEW POST
@@ -94,7 +94,7 @@
                     </div>
                 </div>
                 <p>
-                    <input type="file" name="photo" id="id_photo" required="required">
+                    <input type="file" name="images" id="image_field" accept="image/*">
                 </p>
                 <p>
                     <textarea name="content" id="text_field" cols="50" rows="5" placeholder="140자 까지 등록 가능합니다.
@@ -112,7 +112,7 @@
 
 </section>
 
-<script src="js/insta.js"></script>
+
 
 <script>
        var fileInput  = document.querySelector( "#id_photo" ),

@@ -1,6 +1,6 @@
 # 221003 최해민 import redirect 추가
 from django.shortcuts import render, redirect
-from .models import Instapost #
+from .models import Instapost,Image
 
 
 # Create your views here.
@@ -20,12 +20,16 @@ def create_post(request):
         user = request.user #현재 로그인 한 사용자를 불러오기
         print(user)
         new_post = Instapost( ) #글쓰기 모델 가져오기
+        new_image = Image( ) 
         # 게시물의 작성자 = 현재 요청하는 유저
-        new_post.author = user.name # 모델에 사용자 저장 하기 위해 불러옴/venv
+        new_post.author = user # 모델에 사용자 저장 하기 위해 불러옴/venv
         new_post.content = request.POST.get('content','') #모델에 글 저장하기
-        new_post.save() 
+        new_image.image = request.POST.get('image', '') 
+        print(request.POST)
+        new_post.save()
+        new_image.save()
         # redirect도 네이밍 이용해서 넘겨주셍요
-        return redirect('templates:index') # elif가 실행되지 않으면 'index'로 되돌아감
+        return redirect('instapost:index') # elif가 실행되지 않으면 'index'로 되돌아감
 
 
 # 221003 최해민 댓글기능을 위해 임시로 render 생성

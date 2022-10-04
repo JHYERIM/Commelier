@@ -147,3 +147,6 @@ LOGIN_URL = '/login/'
 # 220930 문규빈 이미지 필드 경로 설정(?)
 MEDIA_ROOT = os.path.join(BASE_DIR, 'ssum')
 MEDIA_URL = '/ssum/'
+
+STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR,'static')
