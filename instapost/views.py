@@ -1,6 +1,8 @@
+
+from django.shortcuts import render ,redirect
 # 221003 최해민 import redirect 추가
-from django.shortcuts import render, redirect
 from .models import Instapost, Image, InstaComment
+
 
 
 # Create your views here.
@@ -25,6 +27,7 @@ def create_post(request):
         new_image = Image( ) 
         # 게시물의 작성자 = 현재 요청하는 유저
         new_post.author = user # 모델에 사용자 저장 하기 위해 불러옴/venv
+
         new_post.content = request.POST.get('content','') #모델에 글 저장하기
         new_image.image = request.FILES.get('images', '') 
         print(request.POST)

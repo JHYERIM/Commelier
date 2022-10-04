@@ -44,8 +44,9 @@
     <header id="header">
         <section class="h_inner">
             <!-- 221004 최해민 템플릿 URL연결 -->
+            <!-- 221004 수정) 최신욱 인스타아이콘 클릭 url 경로 변경-->>
             <h1 class="logo">
-                <a href="{% url 'instapost:index' %}">
+                <a href="{% url 'instauser:login' %}">
                     <div class="sprite_insta_icon"></div>
                     <div>
                         <div class="sprite_write_logo"></div>
@@ -67,7 +68,7 @@
                 <a href="{% url 'instapost:create_review' %}"><div class="sprite_camera_icon"></div></a>
                 <!-- <a href="login.html"><div class="sprite_compass_icon"></div></a> -->
                 <!-- <a href="follow.html"><div class="sprite_heart_icon_outline"></div></a> -->
-                <a href="{% url 'instauser:profile' %}"><div class="sprite_user_icon_outline"></div></a>
+                <a href="{% url 'instauser:login' %}"><div class="sprite_user_icon_outline"></div></a>
             </div>
         </section>
     </header>
