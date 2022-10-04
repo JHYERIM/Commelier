@@ -64,7 +64,7 @@ def signup(request):
             
             else: # password 확인이 맞을때
                 if username == "" or password == "": # 이메일과 패스워드가 공란일 때
-                    return render(request, 'signup.html', {'error' : '이메일 또는 비밀번호를 입력 안하셨습니다.'})
+                    return render(request, 'signup.html', {'error' : 'ID 또는 비밀번호를 입력 안하셨습니다.'})
                 
                 # 221002 최해민 이미 존재하는 유저가 있는지 확인하기 위한 변수 선언(True, False로 반환)
                 exist_user = get_user_model().objects.filter(username = username)
@@ -81,7 +81,5 @@ def signup(request):
                     instauser.save()
                     
                     return redirect('instauser:login')
-        
-    
 
 
