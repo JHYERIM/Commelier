@@ -27,5 +27,5 @@ class InstaComment(models.Model):
     content = models.CharField(max_length=50)
     create_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
-    comment_author = models.ForeignKey(InstaUser, on_delete=models.CASCADE)
+    author = models.ForeignKey(InstaUser, on_delete=models.CASCADE)
     instapost = models.ForeignKey(Instapost, on_delete=models.CASCADE)
