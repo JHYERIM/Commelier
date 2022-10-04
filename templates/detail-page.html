@@ -35,7 +35,7 @@
     <link rel="shortcut icon" href="../static/imgs/instagram.png">
 
 
-    <style> 
+    <style>
         #main_container {
             /*height: 6000px;*/
         }
@@ -134,7 +134,6 @@
                                     <div class="time">{{ comment.create_date | timesince }} 전<span class="try_comment">답글 달기 
                                         {% if comment.author == request.user %}
                                             <a href="{% url 'instapost:delete_comment' comment.id %}">[삭제]</a>
-                                        {% else %}
                                         {% endif %}
                                     </span></div>
                                     
