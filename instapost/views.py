@@ -43,7 +43,7 @@ def edit(request, pk):
     context = {                                          # 인스타포스트 내용 값.   
         'instapost': instapost,
     }
-    return render(request, 'detail-page_1.html', context) 
+    return render(request, 'post_edit.html', context) 
 
 # 게시글 수정하기를 눌렀을 때, 업데이트. <적용>
 
@@ -63,7 +63,7 @@ def update(request, pk):
      # 게시글 수정사항 입력 페이지에 처음 접속했을 때.       
 
      else:
-        return redirect('detail-page_1') #게시글 수정을 눌렀을 때, 기존 데이터가 수정하기 페이지에 저장된 상태로 나타나짐
+        return redirect('detail-page_1') # 게시글 수정을 눌렀을 때, 기존 데이터가 수정하기 페이지에 저장된 상태로 나타나짐
 
 
 # 게시글 삭제 기능.
