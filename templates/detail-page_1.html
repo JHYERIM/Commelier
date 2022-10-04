@@ -107,11 +107,11 @@
 
         </div>
 
-        <form method="POST">
+        <form action= "{% url 'instapost:remove' instapost.pk %}"method="POST" >
             {% if user.is_authenticated %}
             {% csrf_token %}
-            <a href="/detail_page_1/<post.id>/delete/"><button>삭제</button></a>
-            
+            <input class = 'remove' name="remove" type="submit" value="삭제하기">
+        
             {% endif %}
         </form>   
     </div>
