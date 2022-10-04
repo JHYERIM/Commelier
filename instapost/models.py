@@ -16,6 +16,7 @@ class Instapost(models.Model): #메인페이지 클래스 생성
 
 class Image(models.Model): # 게시물 목록/ 게시물 작성에 들어갈 이미지 업로드 클래스 생성
     image = models.ImageField(blank =True ,null=True ,upload_to='images') 
+    instapost = models.ForeignKey(Instapost, on_delete=models.CASCADE, related_name='images')
     #image를 ImageField를 이용해 imges라는 디렉토리 아래에 업로드
 
     

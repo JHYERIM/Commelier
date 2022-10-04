@@ -23,16 +23,14 @@ def create_post(request):
         
     elif request.method == 'POST': #요청하는 방식이 POST 방식인지 확인
         user = request.user #현재 로그인 한 사용자를 불러오기
-        print(user)
         new_post = Instapost( ) #글쓰기 모델 가져오기
         new_image = Image( ) 
         # 게시물의 작성자 = 현재 요청하는 유저
         new_post.author = user # 모델에 사용자 저장 하기 위해 불러옴/venv
-
         new_post.content = request.POST.get('content','') #모델에 글 저장하기
-        new_image.image = request.FILES.get('images', '') 
-        print(request.POST)
         new_post.save()
+        new_image.image = request.FILES.get('images', '')
+        new_image.instapost = new_post
         new_image.save()
         # redirect도 네이밍 이용해서 넘겨주셍요
         return redirect('instapost:index') # elif가 실행되지 않으면 'index'로 되돌아감
@@ -52,21 +50,24 @@ def edit(request, pk):
 # 게시글 수정하기를 눌렀을 때, 업데이트. <적용>
 
 def update(request, pk):
-     instapost = Instapost.objects.get(pk=pk) #게시글 데이터를 instapost에 담아준다.
-     image = Image.objects.get(pk=pk)       # 게시글 이미지 데이터를 불러와서 image에 담아줌
-
+    instapost = Instapost.objects.get(pk=pk) #게시글 데이터를 instapost에 담아준다.
+    image = instapost.images.filter(instapost_id=pk) # 게시글 이미지 데이터를 불러와서 image에 담아줌
      # 게시글 변경사항 저장 하기. 
     
-     if request.method == 'POST': #수정요청이 왔을 때 덮어쓰기
+    if request.method == 'POST': #수정요청이 왔을 때 덮어쓰기
+        image.delete() # 수정 전 데이터를, 삭제
         instapost.content = request.POST.get('content')
-        image.image= request.FILES.get('images')
         instapost.save()
-        image.save()
-        return redirect(str(instapost.pk), 'instapost:index') 
-     
-     # 게시글 수정사항 입력 페이지에 처음 접속했을 때.       
+        
+        update_image = Image()
+        update_image.image = request.FILES.get('images')
+        update_image.instapost = instapost
+        update_image.save()
+        return redirect('instapost:index')
+    
+     # 게시글 수정사항 입력 페이지에 처음 접속했을 때.
 
-     else:
+    else:
         return redirect('detail-page_1') # 게시글 수정을 눌렀을 때, 기존 데이터가 수정하기 페이지에 저장된 상태로 나타나짐
 
 
