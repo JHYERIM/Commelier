@@ -3,3 +3,4 @@ from instapost.models import Instapost
 # Register your models here.
 
 admin.site.register(Instapost)
+admin.site.register()
