@@ -19,10 +19,10 @@ def create_post(request):
         user = request.user #현재 로그인 한 사용자를 불러오기
         print(user)
         new_post = Instapost( ) #글쓰기 모델 가져오기
-        new_post.author = user.name # 모델에 사용자 저장 하기 위해 불러옴/venv
+        new_post.author = user # 모델에 사용자 저장 하기 위해 불러옴/venv
         new_post.content = request.POST.get('content','') #모델에 글 저장하기
         new_post.save() 
-        return redirect('templates:index') # elif가 실행되지 않으면 'index'로 되돌아감
+        return redirect('instapost:index') # elif가 실행되지 않으면 'index'로 되돌아감
 
 
 # 221003 최해민 댓글기능을 위해 임시로 render 생성
