@@ -69,10 +69,6 @@
                 <a href="{% url 'instauser:profile' %}"><div class="sprite_user_icon_outline"></div></a>
             </div>
         </section>
-        <!-- 221003 최신욱, 최해민 login 확인 태그 삽입 -->
-        {% if user.is_authenticated %}
-        <p>Welcome {{ user.username }} !!!</p>
-        {% endif %}
     </header>
 
 
