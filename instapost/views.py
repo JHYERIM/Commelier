@@ -1,6 +1,6 @@
 # 221003 최해민 import redirect 추가
 from django.shortcuts import render, redirect
-from .models import Instapost #
+from .models import InstaComment, Instapost #
 
 
 # Create your views here.
@@ -19,15 +19,40 @@ def create_post(request):
         user = request.user #현재 로그인 한 사용자를 불러오기
         print(user)
         new_post = Instapost( ) #글쓰기 모델 가져오기
-        new_post.author = user.name # 모델에 사용자 저장 하기 위해 불러옴/venv
-        new_post.content = request.POST.get('content','') #모델에 글 저장하기
-        new_post.save() 
-        return redirect('templates:index') # elif가 실행되지 않으면 'index'로 되돌아감
+        
+        new_post.author = user # 모델에 사용자 저장 하기 위해 불러옴 /venv
+        new_post.content = request.POST.get('content','') # 모델에 글 저장하기
+        new_post.save()
+        return redirect('instapost:index') # elif가 실행되지 않으면 'index'로 되돌아감
 
 
 # 221003 최해민 댓글기능을 위해 임시로 render 생성
-def post(request):
-    return render(request, 'post.html')
-def detail_page(request):
-    return render(request, 'detail-page.html')
+def detail_post(request, id):
+    if request.method == "POST":
+        print("hello")
+    elif request.method == "GET":
+        instapost = Instapost.objects.get(id=id)
+    return render(request, 'detail-page.html', {'instapost' : instapost})
 
+
+# 221004 박소민, 최해민 댓글생성 함수 추가
+def create_comment(request, id):
+    # 이 request가 POST인지 확인
+    if request.method == 'POST':
+        # POST방식으로 넘어온 content 데이터가 있습니다. 데이터를 변수에 담아주세요.
+        content = request.POST.get('content','')
+        # 만약에 POST가 맞다면, 붕어빵을 하나 만들어주세요
+        instacomment = InstaComment()
+        # 붕어빵의 content에 데이터 변수를 넣어주세요
+        instacomment.content = content
+        instacomment.comment_author = request.user
+        # 어느 게시물에 달린 댓글인지 구분이 필요
+        # 어느 게시물인지 부터 정해줘야하는데, 그걸 함수의 인자(id)
+        # Instapost.objects 라는 붕어빵들 중에서 id를 대조해서 하나 가져옵니다.
+        instacomment.instapost = Instapost.objects.get(id=id)
+        # 마지막으로 저장 해주시면 됩니다.
+        instacomment.save()
+        
+        # 저장이 끝났으면, detail_post로 보내주세요.
+    return redirect('/instapost/'+str(id))
+# 127.0.0.1:8000/instapost/<int:id>
