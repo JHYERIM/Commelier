@@ -11,6 +11,7 @@ urlpatterns = [
     path('new_post/', views.create_post, name= 'create_review'), #new_post -> create_post로 변경 (22.09.30 문규빈)
     path('<int:pk>/edit/', views.edit, name = 'edit'),
     path('<int:pk>/update/', views.update, name = 'update'),
+    path('<int:pk>/update/edit', views.remove_post, name = 'remove'),
 
     # 221004 박소민 게시글 상세페이지 추가
     path('instapost/<int:id>', views.detail_post, name= 'detail_post'),

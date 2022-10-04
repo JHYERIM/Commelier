@@ -34,48 +34,48 @@ def create_post(request):
         return redirect('instapost:index') # elif가 실행되지 않으면 'index'로 되돌아감
 
 
-# def Edit_post(request, pk):
-#     if request.method == 'GET':  # 요청하는 방식이 GET 방식인지 확인하기
-#         user = request.user.is_authenticated  # 사용자가 로그인이 되어 있는지 확인하기
-#         if user:  # 로그인 한 사용자라면
-#             return render(request, '')
-#         else:  # 로그인이 되어 있지 않다면
-#             return redirect('/login/')
+# 221004 최신욱 문규빈 장혜림 게시물 수정 및 삭제 기능 추가.
 
-
-# def remove_post(request, pk):
-#     post = Instapost.objects.get(pk=pk)
-#     if request.method =='POST':
-#         post.delete()
-#         return redirect('/index/')
-#     return render(request, 'detali-page_1.html', {'Instapost:post'})
-
+# 게시글 수정하기 눌렀을 때. <페이지 이동>
 
 def edit(request, pk):
-    instapost = Instapost.objects.get(pk=pk)
-    context = {
+    instapost = Instapost.objects.get(pk=pk)             # 인스타포스트안에 있는 값들을 전부 다 불러옴.
+    context = {                                          # 인스타포스트 내용 값.   
         'instapost': instapost,
     }
-    return render(request, 'detail-page_1.html', context) #아 
+    return render(request, 'detail-page_1.html', context) 
+
+# 게시글 수정하기를 눌렀을 때, 업데이트. <적용>
 
 def update(request, pk):
-     instapost = Instapost.objects.get(pk=pk)
-     image = Image.objects.get(pk=pk)
+     instapost = Instapost.objects.get(pk=pk) #게시글 데이터를 instapost에 담아준다.
+     image = Image.objects.get(pk=pk)       # 게시글 이미지 데이터를 불러와서 image에 담아줌
 
-     # 게시글 변경사항 저장 하기.
+     # 게시글 변경사항 저장 하기. 
     
-     if request.method == 'POST':
-        
+     if request.method == 'POST': #수정요청이 왔을 때 덮어쓰기
         instapost.content = request.POST.get('content')
         image.image= request.FILES.get('images')
         instapost.save()
         image.save()
-        return redirect(str(instapost.pk), 'instapost:index')
+        return redirect(str(instapost.pk), 'instapost:index') 
      
      # 게시글 수정사항 입력 페이지에 처음 접속했을 때.       
 
      else:
-        return redirect('detail-page_1')
+        return redirect('detail-page_1') #게시글 수정을 눌렀을 때, 기존 데이터가 수정하기 페이지에 저장된 상태로 나타나짐
+
+
+# 게시글 삭제 기능.
+def remove_post(request, pk):
+    post = Instapost.objects.get(pk=pk) # 데이터를 불러와서 post 저장함.
+    image = Image.objects.get(pk=pk)
+    if request.method =='POST':           
+        post.delete()
+        image.delete()                     #데이터를 삭제합니다.
+        return redirect('instapost:index')
+    return render(request, 'detali-page_1.html', {'Instapost:post'})
+
 
 
 

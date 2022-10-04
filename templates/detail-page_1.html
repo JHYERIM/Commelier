@@ -42,7 +42,8 @@
         <section class="h_inner">
 
             <h1 class="logo">
-                <a href="index.html">
+                <!-- 221004 최해민 템플릿 URL연결 -->
+                <a href="{% url 'instapost:index' %}">
                     <div class="sprite_insta_icon"></div>
                     <div>
                         <div class="sprite_write_logo"></div>
@@ -61,10 +62,11 @@
 
 
             <div class="right_icons">
-                <a href="new_post.html"><div class="sprite_camera_icon"></div></a>
-                <a href="login.html"><div class="sprite_compass_icon"></div></a>
-                <a href="follow.html"><div class="sprite_heart_icon_outline"></div></a>
-                <a href="profile.html"><div class="sprite_user_icon_outline"></div></a>
+                <!-- 221004 최해민 템플릿 URL연결 -->
+                <a href="{% url 'instapost:create_review' %}"><div class="sprite_camera_icon"></div></a>
+                <!-- <a href="login.html"><div class="sprite_compass_icon"></div></a> -->
+                <!-- <a href="follow.html"><div class="sprite_heart_icon_outline"></div></a> -->
+                <a href="{% url 'instauser:profile' %}"><div class="sprite_user_icon_outline"></div></a>
             </div>
         </section>
     </header>
@@ -105,11 +107,11 @@
 
         </div>
 
-        <form method="POST">
+        <form action= "{% url 'instapost:remove' instapost.pk %}"method="POST" >
             {% if user.is_authenticated %}
             {% csrf_token %}
-            <a href="/detail_page_1/<post.id>/delete/"><button>삭제</button></a>
-            
+            <input class = 'remove' name="remove" type="submit" value="삭제하기">
+        
             {% endif %}
         </form>   
     </div>
