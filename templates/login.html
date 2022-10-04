@@ -43,9 +43,9 @@
 
     <header id="header">
         <section class="h_inner">
-
+            <!-- 221004 최해민 템플릿 URL연결 -->
             <h1 class="logo">
-                <a href="index.html">
+                <a href="{% url 'instapost:index' %}">
                     <div class="sprite_insta_icon"></div>
                     <div>
                         <div class="sprite_write_logo"></div>
@@ -62,12 +62,12 @@
                 </div>
             </div>
 
-
+            <!-- 221004 최해민 템플릿 URL연결 -->
             <div class="right_icons">
-                <a href="new_post.html"><div class="sprite_camera_icon"></div></a>
-                <a href="login.html"><div class="sprite_compass_icon"></div></a>
-                <a href="follow.html"><div class="sprite_heart_icon_outline"></div></a>
-                <a href="profile.html"><div class="sprite_user_icon_outline"></div></a>
+                <a href="{% url 'instapost:create_review' %}"><div class="sprite_camera_icon"></div></a>
+                <!-- <a href="login.html"><div class="sprite_compass_icon"></div></a> -->
+                <!-- <a href="follow.html"><div class="sprite_heart_icon_outline"></div></a> -->
+                <a href="{% url 'instauser:profile' %}"><div class="sprite_user_icon_outline"></div></a>
             </div>
         </section>
     </header>
@@ -84,7 +84,7 @@
                 <h1 class="sprite_insta_big_logo title"></h1>
                 <form action="{% url 'instauser:login' %}" method='post'>
                     {% csrf_token %}
-                    <p class="login_user_name">>
+                    <p class="login_user_name">
                         <label for="username">ID:</label>
                         <input type="text" name='username' id='username'>
                     </p>
