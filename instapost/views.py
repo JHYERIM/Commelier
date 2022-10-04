@@ -1,12 +1,8 @@
-<<<<<<< HEAD
-from django.shortcuts import render ,redirect
-from .models import Posting #
 
-=======
+from django.shortcuts import render ,redirect
 # 221003 최해민 import redirect 추가
-from django.shortcuts import render, redirect
 from .models import Instapost, Image, InstaComment
->>>>>>> 92cfcad262d9309ded3155e6ef66f9a55a89e6db
+
 
 
 # Create your views here.
@@ -25,23 +21,15 @@ def create_post(request):
     elif request.method == 'POST': #요청하는 방식이 POST 방식인지 확인
         user = request.user #현재 로그인 한 사용자를 불러오기
         print(user)
-<<<<<<< HEAD
-        new_post = Posting( ) #글쓰기 모델 가져오기
-        new_post.author = user # 모델에 사용자 저장 하기 위해 불러옴
-=======
         new_post = Instapost( ) #글쓰기 모델 가져오기
         new_image = Image( ) 
         # 게시물의 작성자 = 현재 요청하는 유저
         new_post.author = user # 모델에 사용자 저장 하기 위해 불러옴/venv
->>>>>>> 92cfcad262d9309ded3155e6ef66f9a55a89e6db
+
         new_post.content = request.POST.get('content','') #모델에 글 저장하기
         new_image.image = request.FILES.get('images', '') 
         print(request.POST)
         new_post.save()
-<<<<<<< HEAD
-        return redirect(request, 'instapost:index') # elif가 실행되지 않으면 'create_post'로 되돌아감
-    # 
-=======
         new_image.save()
         # redirect도 네이밍 이용해서 넘겨주셍요
         return redirect('instapost:index') # elif가 실행되지 않으면 'index'로 되돌아감
@@ -134,4 +122,3 @@ def delete_comment(request, id):
     now_instapost = comment.instapost.id
     comment.delete()
     return redirect('/instapost/'+str(now_instapost))
->>>>>>> 92cfcad262d9309ded3155e6ef66f9a55a89e6db
