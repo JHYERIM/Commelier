@@ -1,21 +1,50 @@
-<link rel="stylesheet" href="../static/css/signup.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <!-- Facebook Meta Tags / 페이스북 오픈 그래프 -->
+    <meta property="og:url" content="http://kindtiger.dothome.co.kr/insta">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="instagram">
+    <meta property="og:description" content="instagram clone">
+    <meta property="og:image" content="http://kindtiger.dothome.co.kr/insta/imgs/instagram.jpeg">
+    
+    <!-- Twitter Meta Tags / 트위터 -->
+    <meta name="twitter:card" content="instagram clone">
+    <meta name="twitter:title" content="instagram">
+    <meta name="twitter:description" content="instagram clone">
+    <meta name="twitter:image" content="http://kindtiger.dothome.co.kr/insta/imgs/instagram.jpeg">
+
+    <!-- Google / Search Engine Tags / 구글 검색 엔진 -->
+    <meta itemprop="name" content="instagram">
+    <meta itemprop="description" content="instagram clone">
+    <meta itemprop="image" content="http://kindtiger.dothome.co.kr/insta/imgs/instagram.jpeg">
+
+
+    <title>instagram</title>
+    <link rel="shortcut icon" href="../static/imgs/instagram.png">
+    <link rel="stylesheet" href="../static/css/signup.css">
+</head>
 <main>
   <div class="page">
     <div class="header">
       <h1 class="logo">Instagram</h1>
       <p>Sign up to see photos and videos from your friends.</p>
-      <button><i class="fab fa-facebook-square"></i> Log in with Facebook</button>
-      <div>
+      <!-- <button><i class="fab fa-facebook-square"></i> Log in with Facebook</button> -->
+      <!-- <div>
         <hr>
         <p>OR</p>
         <hr>
-      </div>
+      </div> -->
     </div>
     <div class="container">
       <form action="{% url 'instauser:signup' %}" method="post">
         {% csrf_token %}
-        <input type="email" name="email" placeholder="이메일">
-        <input type="text" name="name" placeholder="성함">
+        <!-- 221003 최해민 필요없는 인풋 삭제 -->
+        <input type="text" name="username" placeholder="ID">
         <input type="text" name="nickname" placeholder="닉네임">
         <input type="password" name="password" placeholder="비밀번호">
         <!-- 221002 최해민 사용자 비밀번호 확인을 위한 password2추가 -->
@@ -27,7 +56,7 @@
             <option value="True">Couple</option>
           </select>
         </div>
-        <button type="submit">Sign up</button>
+        <button class="signup_button" type="submit">Sign up</button>
       </form>
 
       <!-- 221002 최해민 error 메세지 보여주기 -->
@@ -49,12 +78,12 @@
   <div class="option">
     <p>Have an account? <a href="{% url 'instauser:login' %}">Log in</a></p>
   </div>
-  <div class="otherapps">
+  <!-- <div class="otherapps">
     <p>Get the app.</p>
     <button type="button"><i class="fab fa-apple"></i> App Store</button>
     <button type="button"><i class="fab fa-google-play"></i> Google Play</button>
-  </div>
-  <div class="footer">
+  </div> -->
+  <!-- <div class="footer">
     <ul>
       <li><a href="">ABOUT</a></li>
       <li><a href="">HELP</a></li>
@@ -69,5 +98,6 @@
       <li><a href="">LANGUAGE</a></li>
     </ul>
     <p>© 2020 PICTUREGRAM</p>
-  </div>
+  </div> -->
 </main>
+</html>

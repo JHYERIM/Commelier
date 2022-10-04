@@ -14,7 +14,7 @@
     <meta property="og:title" content="instagram">
     <meta property="og:description" content="instagram clone">
     <meta property="og:image" content="http://kindtiger.dothome.co.kr/insta/imgs/instagram.jpeg">
-    .
+    
     <!-- Twitter Meta Tags / 트위터 -->
     <meta name="twitter:card" content="instagram clone">
     <meta name="twitter:title" content="instagram">
@@ -28,14 +28,14 @@
 
 
     <title>instagram</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/detail-page.css">
-    <link rel="shortcut icon" href="imgs/instagram.png">
+    <link rel="stylesheet" href="../static/css/reset.css">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/detail-page.css">
+    <link rel="shortcut icon" href="../static/imgs/instagram.png">
 
 
-    <style>
+    <style> 
         #main_container {
             /*height: 6000px;*/
         }
@@ -89,21 +89,20 @@
 
                     <div class="img_section">
                         <div class="trans_inner">
-                            <div><img src="imgs/img_section/img03.jpg" alt=""></div>
+                            <div><img src="../static/imgs/img_section/img03.jpg" alt=""></div>
                         </div>
                     </div>
 
-
+                    <!-- 221004 박소민, 최해민 댓글 기능구현을 위해 수정 -->
                     <div class="detail--right_box">
-
                         <header class="top">
                             <div class="user_container">
                                 <div class="profile_img">
-                                    <img src="imgs/thumb.jpeg" alt="">
+                                    <img src="../static/imgs/thumb.jpeg" alt="">
                                 </div>
                                 <div class="user_name">
-                                    <div class="nick_name">KindTiger</div>
-                                    <div class="country">Seoul, South Korea</div>
+                                    <div class="nick_name">{{ instapost.author.nickname }}</div>
+                                    <div class="country">{{ instapost.author.username }}</div>
                                 </div>
                             </div>
                             <div class="sprite_more_icon" data-name="more">
@@ -115,21 +114,30 @@
                             </div>
 
                         </header>
-
+                        <!-- 221004 박소민, 최해민 댓글기능 구현 수정 -->
                         <section class="scroll_section">
                             <div class="admin_container">
-                                <div class="admin"><img src="imgs/thumb.jpeg" alt="user"></div>
+                                <div class="admin"><img src="../static/imgs/thumb.jpeg" alt="user"></div>
                                 <div class="comment">
-                                    <span class="user_id">Kindtiger</span>강아지가 많이 힘든가보다ㅜㅜㅜㅜㅜ조금만힘내
-                                    <div class="time">2시간</div>
+                                    <span class="user_id">{{ instapost.author.nickname }}</span>{{ instapost.content }}
+                                    <div class="time">{{ instapost.create_date }}</div>
                                 </div>
                             </div>
-
+                            <!-- comments = [댓글1, 댓글2, 댓글3, 댓글4 ...] -->
+                            <!-- for문을 이용해서 하나씩 꺼내와줍니다. -->
+                             
+                            {% for comment in comments %}
                             <div class="user_container-detail">
-                                <div class="user"><img src="imgs/thumb02.jpg" alt="user"></div>
+                                <div class="user"><img src="../static/imgs/thumb02.jpg" alt="user"></div>
                                 <div class="comment">
-                                    <span class="user_id">in0.lee</span>너무귀엽네요 ㅎㅎㅎ맞팔해요~!
-                                    <div class="time">2시간 <span class="try_comment">답글 달기</span></div>
+                                    <span class="user_id">{{ comment.author.nickname }}</span>{{ comment.content }}
+                                    <div class="time">{{ comment.create_date | timesince }} 전<span class="try_comment">답글 달기 
+                                        {% if comment.author == request.user %}
+                                            <a href="{% url 'instapost:delete_comment' comment.id %}">[삭제]</a>
+                                        {% else %}
+                                        {% endif %}
+                                    </span></div>
+                                    
                                     <div class="icon_wrap">
                                         <div class="more_trigger">
                                             <div class="sprite_more_icon"></div>
@@ -140,71 +148,7 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="user_container-detail">
-                                <div class="user"><img src="imgs/thumb03.jpg" alt="user"></div>
-                                <div class="comment">
-                                    <span class="user_id">ye_solkim</span>강아지 이름이 뭐에요???
-                                    <div class="time">2시간 <span class="try_comment">답글 달기</span></div>
-                                    <div class="icon_wrap">
-                                        <div class="more_trigger">
-                                            <div class="sprite_more_icon"></div>
-                                        </div>
-                                        <div>
-                                            <div class="sprite_small_heart_icon_outline"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="user_container-detail">
-                                <div class="user"><img src="imgs/thumb02.jpg" alt="user"></div>
-                                <div class="comment">
-                                    <span class="user_id">in0.lee</span>너무귀엽네요 ㅎㅎㅎ맞팔해요~!
-                                    <div class="time">2시간 <span class="try_comment">답글 달기</span></div>
-                                    <div class="icon_wrap">
-                                        <div class="more_trigger">
-                                            <div class="sprite_more_icon"></div>
-                                        </div>
-                                        <div>
-                                            <div class="sprite_small_heart_icon_outline"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="user_container-detail">
-                                <div class="user"><img src="imgs/thumb03.jpg" alt="user"></div>
-                                <div class="comment">
-                                    <span class="user_id">in0.lee</span>너무귀엽네요
-                                    <div class="time">2시간 <span class="try_comment">답글 달기</span></div>
-                                    <div class="icon_wrap">
-                                        <div class="more_trigger">
-                                            <div class="sprite_more_icon"></div>
-                                        </div>
-                                        <div>
-                                            <div class="sprite_small_heart_icon_outline"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="user_container-detail">
-                                <div class="user"><img src="imgs/thumb02.jpg" alt="user"></div>
-                                <div class="comment">
-                                    <span class="user_id">in0.lee</span>너무귀엽네요 ㅎㅎㅎ맞팔해요~!
-                                    <div class="time">2시간 <span class="try_comment">답글 달기</span></div>
-                                    <div class="icon_wrap">
-                                        <div class="more_trigger">
-                                            <div class="sprite_more_icon"></div>
-                                        </div>
-                                        <div>
-                                            <div class="sprite_small_heart_icon_outline"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                            {% endfor %}
                         </section>
 
 
@@ -234,9 +178,12 @@
                         <div class="timer">2시간</div>
 
                         <div class="commit_field">
-                            <input type="text" placeholder="댓글달기..">
-
-                            <div class="upload_btn">게시</div>
+                            <!-- 221004 박소민, 최해민 form태그 추가 -->
+                            <form action="{% url 'instapost:create_comment' instapost.id %}" method="post">
+                                {% csrf_token %}
+                                <input type="text" placeholder="댓글달기.." name="content">
+                                <button type="submit">게시</button>
+                            </form>
                         </div>
 
 
