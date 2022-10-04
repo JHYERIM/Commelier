@@ -79,12 +79,14 @@ def update(request, pk):
 
 # 221003 최해민 댓글기능을 위해 임시로 render 생성
 def detail_post(request, id):
-    if request.method == "POST":
-        print("hello")
-    elif request.method == "GET":
-        instapost = Instapost.objects.get(id=id)
-    return render(request, 'detail-page.html', {'instapost' : instapost})
-
+    # 1번 게시물을 가져왔음.
+    instapost = Instapost.objects.get(id=id)
+    # 1번 게시물에 달린 댓글들을 모두 가져와야 함
+    comments = InstaComment.objects.filter(instapost_id = id)
+    return render(request, 'detail-page.html', {'instapost' : instapost, 
+                                                'comments': comments, 
+                                                })
+# comments = [댓글1, 댓글2, 댓글3, 댓글4 ...]
 
 # 221004 박소민, 최해민 댓글생성 함수 추가
 def create_comment(request, id):
@@ -96,7 +98,7 @@ def create_comment(request, id):
         instacomment = InstaComment()
         # 붕어빵의 content에 데이터 변수를 넣어주세요
         instacomment.content = content
-        instacomment.comment_author = request.user
+        instacomment.author = request.user
         # 어느 게시물에 달린 댓글인지 구분이 필요
         # 어느 게시물인지 부터 정해줘야하는데, 그걸 함수의 인자(id)
         # Instapost.objects 라는 붕어빵들 중에서 id를 대조해서 하나 가져옵니다.
