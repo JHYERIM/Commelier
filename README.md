@@ -50,6 +50,6 @@
 
 
 ## 5.🛠️ 이렇게 문제 해결했어요.
-<a>상세 WIKI 이동!</a>
+<a href="https://github.com/haeminchoi2/Commelier/wiki/%ED%8A%B8%EB%9F%AC%EB%B8%94%EC%8A%88%ED%8C%85">상세 WIKI 이동!</a>
 
 
