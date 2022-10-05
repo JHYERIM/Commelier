@@ -221,9 +221,9 @@ body {
 }
 
 #header .right_icons {
-    width: 132px;
+    width: 5rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 #header .right_icons > div > a {

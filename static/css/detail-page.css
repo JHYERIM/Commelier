@@ -1,7 +1,11 @@
 
-
+.my_delete{
+    color: #ed4956;
+    text-decoration-line: none;
+}
 .contents{
     max-width:933px;
+    width: 100%;
     display: flex;
     border: 1px solid rgba(0,0,0,.0975);
     border-radius: 3px;
@@ -11,8 +15,10 @@
 .contents .img_section{
     overflow: hidden;
     max-width: 598px;
+    width: 100%;
     border-right: 1px solid rgba(0,0,0,.0975);
-
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .contents .img_section .trans_inner{
@@ -22,14 +28,13 @@
 
 .contents .img_section .trans_inner > div{
     width: 100%;
-    display: inline-block;
+    display: flex;
+    align-content: center;
 }
 .contents .img_section .trans_inner img{
     width: 100%;
     height: 100%;
 }
-
-
 
 .user_container{
     display: flex;
@@ -58,10 +63,6 @@
     margin-bottom: 5px;
 }
 
-
-.contents .top{
-
-}
 .top .more_detail{
     position: absolute;
     right: -60px;
@@ -117,6 +118,7 @@
 .detail--right_box{
     max-width:335px;
     width: 100%;
+    height: 100%;
 }
 
 
@@ -312,6 +314,15 @@
     min-height: 56px;
     padding: 0 20px;
     position: relative;
+}
+.commit_field > form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.commit_field > form > button{
+    width: 5rem;
 }
 
 .content{
