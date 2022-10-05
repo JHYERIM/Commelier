@@ -22,7 +22,8 @@
                                         nickname = nickname,
                                         is_dating = is_dating,)
                     
-                    # set_password() 함수는 Django 유저 비밀번호를 암호화해주는 함수입니다. 이를 추가해 비밀번호가 평문으로 저장되는 것을 방지합니다. 
+                    # set_password() 함수는 Django 유저 비밀번호를 암호화해주는 함수입니다.
+                    # 이를 추가해 비밀번호가 평문으로 저장되는 것을 방지합니다. 
                     instauser.set_password(password) 
                     instauser.save()
                     
