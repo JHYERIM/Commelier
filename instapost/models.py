@@ -13,7 +13,6 @@ class Instapost(models.Model): #메인페이지 클래스 생성
     create_date = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(InstaUser, on_delete=models.CASCADE, related_name='instaposts')
 
-    
 
 class Image(models.Model): # 게시물 목록/ 게시물 작성에 들어갈 이미지 업로드 클래스 생성
     image = models.ImageField(blank =True ,null=True ,upload_to='images') 
@@ -24,7 +23,7 @@ class Image(models.Model): # 게시물 목록/ 게시물 작성에 들어갈 이
         super(Image, self).delete(*args, **kwargs)
         os.remove(os.path.join(settings.MEDIA_ROOT, self.image.path))
 
-    
+
 class Edit_time(models.Model):
     modify_date =models.DateTimeField(null=True,blank=True)
 
