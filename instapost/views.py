@@ -1,4 +1,3 @@
-
 from django.shortcuts import render ,redirect
 # 221003 최해민 import redirect 추가
 from .models import Instapost, Image, InstaComment
@@ -50,6 +49,16 @@ def edit(request, pk):
 # 게시글 수정하기를 눌렀을 때, 업데이트. <적용>
 
 def update(request, pk):
+    """
+    instapost : 게시글 데이터를 instapost에 담아준다.
+    image : 게시글 이미지 데이터를 불러와서 image에 담아줌
+    
+    method POST 일 경우 : 수정요청이 왔을 때 덮어쓰기
+    수정 전 데이터를, 삭제
+    
+    아닐경우: 게시글 수정사항 입력 페이지에 처음 접속했을 때.
+    게시글 수정을 눌렀을 때, 기존 데이터가 수정하기 페이지에 저장된 상태로 나타나짐
+    """
     instapost = Instapost.objects.get(pk=pk) #게시글 데이터를 instapost에 담아준다.
     image = instapost.images.filter(instapost_id=pk) # 게시글 이미지 데이터를 불러와서 image에 담아줌
      # 게시글 변경사항 저장 하기. 

@@ -1,8 +1,8 @@
 from distutils.command.upload import upload
 from django.db import models
-import instapost
+import os
 from instauser.models import InstaUser
-
+from Commelier import settings
 
 
 # Create your models here.
@@ -19,6 +19,10 @@ class Image(models.Model): # 게시물 목록/ 게시물 작성에 들어갈 이
     image = models.ImageField(blank =True ,null=True ,upload_to='images') 
     instapost = models.ForeignKey(Instapost, on_delete=models.CASCADE, related_name='images')
     #image를 ImageField를 이용해 imges라는 디렉토리 아래에 업로드
+    
+    def delete(self, *args, **kwargs):
+        super(Image, self).delete(*args, **kwargs)
+        os.remove(os.path.join(settings.MEDIA_ROOT, self.image.path))
 
     
 class Edit_time(models.Model):

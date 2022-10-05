@@ -33,13 +33,7 @@
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="../static/css/detail-page.css">
     <link rel="shortcut icon" href="../static/imgs/instagram.png">
-
-
-    <style>
-        #main_container {
-            /*height: 6000px;*/
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
 
@@ -58,16 +52,6 @@
                     </div>
                 </a>
             </h1>
-
-            <div class="search_field">
-                <input type="text" placeholder="검색" tabindex="0">
-
-                <div class="fake_field">
-                    <span class=sprite_small_search_icon></span>
-                    <span>검색</span>
-                </div>
-            </div>
-
 
             <div class="right_icons">
                 <a href="{% url 'instapost:create_review' %}"><div class="sprite_camera_icon"></div></a>
@@ -105,7 +89,7 @@
                                     <div class="country">{{ instapost.author.username }}</div>
                                 </div>
                             </div>
-                            <div class="sprite_more_icon" data-name="more">
+                            <div class="sprite_more_icon" data-name="more" onclick="location.href='{% url 'instapost:edit' instapost.id %}';">
                                 <ul class="more_detail">
                                     <li>팔로우</li>
                                     <li>수정</li>
@@ -133,7 +117,7 @@
                                     <span class="user_id">{{ comment.author.nickname }}</span>{{ comment.content }}
                                     <div class="time">{{ comment.create_date | timesince }} 전<span class="try_comment">답글 달기 
                                         {% if comment.author == request.user %}
-                                            <a href="{% url 'instapost:delete_comment' comment.id %}">[삭제]</a>
+                                            <a class="my_delete" href="{% url 'instapost:delete_comment' comment.id %}">[삭제]</a>
                                         {% endif %}
                                     </span></div>
                                     
@@ -174,14 +158,14 @@
                             <span class="count">2,351</span>
                             개
                         </div>
-                        <div class="timer">2시간</div>
+                        <div class="timer">{{ instapost.create_date | timesince }} 전</div>
 
                         <div class="commit_field">
                             <!-- 221004 박소민, 최해민 form태그 추가 -->
                             <form action="{% url 'instapost:create_comment' instapost.id %}" method="post">
                                 {% csrf_token %}
                                 <input type="text" placeholder="댓글달기.." name="content">
-                                <button type="submit">게시</button>
+                                <button type="submit" class="btn btn-light">게시</button>
                             </form>
                         </div>
 
