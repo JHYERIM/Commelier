@@ -110,13 +110,7 @@ body{
 }
 
 
-#header .search_box .fake_field{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform:translate(-50%,-50%);
-    pointer-events: none;
-}
+
 
 
 #search-field:focus ~ .fake_field > span:nth-child(1){
@@ -524,9 +518,7 @@ body{
 
 @media screen and (max-width:650px){
 
-    #header .search_box{
-        display:none;
-    }
+    
 
     .hidden_menu{
         width: 95%;
