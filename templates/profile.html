@@ -93,14 +93,19 @@
                         </div>
 
                         <ul class="middle">
+                            {% if user.is_dating == True %}
+                            <li>
+                                <span>Couple</span>
+                            </li>
+                            {% else %}
+                            <li>
+                                <span>Single</span>
+                            </li>
+                            {% endif %}
                             <li>
                                 <span>게시물</span>
                                 {{ instaposts.count }}
                             </li>
-                            <!-- <li>
-                                <span>팔로워</span>
-                                3
-                            </li> -->
                             <!-- <li>
                                 <span>팔로우</span>
                                 3

@@ -60,7 +60,11 @@
                                 </div>
                                 <div class="user_name">
                                     <div class="nick_name m_text">{{ instapost.author.nickname }}</div>
-                                    <div class="country s_text">Seoul, South Korea</div>
+                                    {% if instapost.author.is_dating == "True"%}
+                                    <div class="country s_text">Couple</div>
+                                    {% else %}
+                                    <div class="country s_text">Single</div>
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="sprite_more_icon" data-name="more" onclick="location.href='{% url 'instapost:edit' instapost.id %}';">
@@ -115,7 +119,7 @@
                                 {% csrf_token %}
                                 <input type="text" class= "comment_box1" placeholder="댓글달기..." name="content">
                                 <div class = "comment_btn">
-                                <button type="button" class="btn btn-light">게시</button>
+                                <button type="submit" class="btn btn-light">게시</button>
                                 </div>
                             </form>
                         </div>

@@ -83,10 +83,10 @@ def update(request, pk):
 # 게시글 삭제 기능.
 def remove_post(request, pk):
     post = Instapost.objects.get(pk=pk) # 데이터를 불러와서 post 저장함.
-    # image = Image.objects.get(pk=pk)
+    #image = Image.objects.get(pk=pk)
     if request.method =='POST':           
         post.delete()
-        # image.delete()                     #데이터를 삭제합니다.
+        #image.delete()                     #데이터를 삭제합니다.
         return redirect('instapost:index')
     return render(request, 'detali-page_1.html', {'Instapost:post'})
 
