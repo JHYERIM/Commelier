@@ -70,10 +70,10 @@
 
 
             <div class="right_icons">
-                <a href="new_post.html"><div class="sprite_camera_icon"></div></a>
-                <a href="login.html"><div class="sprite_compass_icon"></div></a>
-                <a href="follow.html"><div class="sprite_heart_icon_outline"></div></a>
-                <a href="profile.html"><div class="sprite_user_icon_outline"></div></a>
+                <a href="{% url 'instapost:create_review' %}"><div class="sprite_camera_icon"></div></a>
+                <!-- <a href="login.html"><div class="sprite_compass_icon"></div></a>
+                <a href="follow.html"><div class="sprite_heart_icon_outline"></div></a> -->
+                <a href="{% url 'instauser:profile' %}"><div class="sprite_user_icon_outline"></div></a>
             </div>
         </section>
     </header>
@@ -89,7 +89,7 @@
 
                     <div class="img_section">
                         <div class="trans_inner">
-                            <div><img src="../static/imgs/img_section/img03.jpg" alt=""></div>
+                            <div><img src="../ssum/{{ instapost.images.get.image }}" alt=""></div>
                         </div>
                     </div>
 
