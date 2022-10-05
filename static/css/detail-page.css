@@ -313,6 +313,14 @@
     padding: 0 20px;
     position: relative;
 }
+.commit_field > form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.commit_field > form > button{
+    width: 5rem;
+}
 
 .content{
     font-size: 35px;
