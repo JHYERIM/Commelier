@@ -22,7 +22,7 @@ from instapost import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    
+    path('', views.index),
     # 221003 최해민 instapost include추가
     path('', include('instapost.urls')),
 
