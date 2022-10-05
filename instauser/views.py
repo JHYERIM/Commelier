@@ -24,6 +24,7 @@ def login_view(request):
         return redirect('instauser:profile')
     else:
         return redirect('instauser:login')
+      
 
 #'%s?next=%s' : 기본적으로 인증 성공시 사용자를 리다이렉트하는 경로는 "next"라는 쿼리 문자열 매개 변수에  저장
 

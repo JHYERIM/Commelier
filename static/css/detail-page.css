@@ -320,6 +320,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+
 }
 .commit_field > form > button{
     width: 5rem;

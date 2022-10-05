@@ -86,9 +86,9 @@ body {
 
 .sprite_camera_icon {
     display: inline-block;
-    background: url('../imgs/background01.png') no-repeat -271px -104px;
+    background: url('../imgs/background01.png') no-repeat -187px -202px;
     width: 24px;
-    height: 22px;
+    height: 23px;
 }
 
 .sprite_insta_big_logo {

@@ -30,6 +30,17 @@
     <link rel="stylesheet" href="../static/css/style.css">
     <link rel="stylesheet" href="../static/css/new_post.css">
     <link rel="shortcut icon" href="../static/imgs/instagram.png">
+    
+    <style>
+
+        .plus_icon {
+            margin-top : 50px
+        }
+        .post_box {
+            margin-top : 50px
+        }
+    
+    </style>
 
 </head>
 <body>
@@ -50,16 +61,6 @@
                 </a>
             </h1>
 
-            <div class="search_field">
-                <input type="text" placeholder="검색" tabindex="0">
-
-                <div class="fake_field">
-                    <span class="sprite_small_search_icon"></span>
-                    <span>검색</span>
-                </div>
-            </div>
-
-
             <div class="right_icons">
                 <a href="{% url 'instapost:create_review' %}"><div class="sprite_camera_icon"></div></a>
                 <!-- <a href="login.html"><div class="sprite_compass_icon"></div></a>
@@ -78,7 +79,7 @@
             <form action="{% url 'instapost:create_review' %}"  method= "post" class="post" enctype="multipart/form-data">
                 {% csrf_token %} <!--22.10.03 문규빈 암호화-->
                 <div class="title">
-                    NEW POST
+                    게시글 작성하기
                 </div>
                 <div class="preview">
                     <div class="upload">
@@ -87,19 +88,19 @@
                                 <span></span>
                                 <span></span>
                             </div>
-                            <p>포스트 이미지 추가</p>
-                            <canvas id="imageCanvas"></canvas>
-                            <!--<p><img id="img_id" src="#" style="width: 300px; height: 300px; object-fit: cover" alt="thumbnail"></p>-->
+                            <div class="post_box">
+                                
+                                <canvas id="imageCanvas"></canvas>
+                                <!--<p><img id="img_id" src="#" style="width: 300px; height: 300px; object-fit: cover" alt="thumbnail"></p>-->
+                            </div>   
                         </div>
                     </div>
                 </div>
                 <p>
-                    <input type="file" name="images" id="image_field" accept="image/*">
+                    <input type="file" name="images" id="image_field" accept="image/*" style="margin: 5px">
                 </p>
                 <p>
-                    <textarea name="content" id="text_field" cols="50" rows="5" placeholder="140자 까지 등록 가능합니다.
-#태그명 을 통해서 검색 태그를 등록할 수 있습니다.
-예시 : I # love # insta!"></textarea>
+                    <textarea name="content" id="text_field" cols="50" rows="5" style="margin-top: 5px"></textarea>
 
                 </p>
                 <input class="submit_btn" type="submit" value="저장">
@@ -111,6 +112,7 @@
 
 
 </section>
+
 
 
 

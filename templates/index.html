@@ -5,13 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>Title</title>
+    <title>Instagram</title>
 
     <link rel="stylesheet" href="../static/css/reset.css">
     <link rel="stylesheet" href="../static/css/common.css">
     <link rel="stylesheet" href="../static/css/style.css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
-
+   
 </head>
 
 <body>
@@ -77,7 +80,7 @@
                         <div class="img_section">
                             <div class="trans_inner">
                                 <div><img src="../ssum/{{ instapost.images.get.image }}" alt="visual01"></div>
-                                <div>{{ instapost.content }}</div>
+                                <div class= "index_content">{{ instapost.content }}</div>
                             </div>
                         </div>
                         <div class="bottom_icons">
@@ -99,6 +102,7 @@
                             개
                         </div> -->
                         {% for comment in instapost.comments.all %}
+                        <div>
                         <div class="comment_container">
                             <div class="comment" id="comment-list-ajax-post37">
                                 <div class="comment-detail">
@@ -115,12 +119,16 @@
                         <div class="comment_field" id="add-comment-post37">
                             <form action="{% url 'instapost:create_comment' instapost.id %}" method="post">
                                 {% csrf_token %}
-                                <input type="text" placeholder="댓글달기..." name="content">
-                                <button type="submit">게시</button>
+                                <input type="text" class= "comment_box1" placeholder="댓글달기..." name="content">
+                                <div class = "comment_btn">
+                                <button type="button" class="btn btn-light">게시</button>
+                                </div>
                             </form>
                         </div>
-                    </article>
-                </div>
+                    </div>
+                
+                    
+                </article>
                 {% endfor %}
                 <input type="hidden" id="page" value="1">
             </div>
@@ -129,6 +137,9 @@
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="js/main.js"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>    
 </body>
 
 </html>
