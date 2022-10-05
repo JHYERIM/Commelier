@@ -34,10 +34,16 @@ def logout_view(request):
 
 
 def profile_view(request):
-    instauser = InstaUser.objects.get(id=request.user.id)
-    instaposts = instauser.instaposts.all()
-    
-    return render(request,'profile.html', {'instauser':instauser, 'instaposts':instaposts})
+    if request.method == 'GET':  # 요청하는 방식이 GET 방식인지 확인하기
+        user = request.user.is_authenticated  # 사용자가 로그인이 되어 있는지 확인하기
+        if user:  # 로그인 한 사용자라면
+            instauser = InstaUser.objects.get(id=request.user.id)
+            instaposts = instauser.instaposts.all()
+            
+            return render(request,'profile.html', {'instauser':instauser, 'instaposts':instaposts})
+        else:  # 로그인이 되어 있지 않다면
+            return redirect('/login/')
+
     
 
 # 220930 최해민 회원가입후 로그인페이지로 보내기 위한 함수
