@@ -34,7 +34,10 @@ def logout_view(request):
 
 
 def profile_view(request):
-    return render(request,'profile.html')
+    instauser = InstaUser.objects.get(id=request.user.id)
+    instaposts = instauser.instaposts.all()
+    
+    return render(request,'profile.html', {'instauser':instauser, 'instaposts':instaposts})
     
 
 # 220930 최해민 회원가입후 로그인페이지로 보내기 위한 함수
