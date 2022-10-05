@@ -44,3 +44,13 @@
 ----
 
 ## 5. 이렇게 문제 해결했어요.
+
+git branch
+git log --oneline
+HEAD>>
+origin/master
+
+머더라?
+c14ad9f (HEAD -> master, origin/master, origin/HEAD) Merge pull request #32 from MoonGyuBin/gyubin
+git pull origin master
+git status
